@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{%block content%}
+       
+
+        <div>
+            {% if request.user.is_authenticated%}
+                <h2> User: {{request.user}}</h2>
+                <a href="{% url 'logout_user' %}"> LogOut </a>
+                <a href="{% url 'update_password' %}"> Parolni o'zgartirish </a>
+
+            {%else%}
+                <a href="{% url 'login' %}"> Tizimga kirish </a>
+                <a href="{% url 'signup' %}"> Ro'yxatdan O'tish </a>
+            {%endif%}
+        </div>
+        <h1> Yangiliklar  [soni: {{articles|length}}]</h1>
+{%for article in articles%}
+
+    <a href="{% url 'article-detail'  article.slug %}">
+
+        <p> {{article.id}}. {{article.title| lower}} ({{article.created_at}}) </p>
+</a>
+        
+         {% endfor %}
+
+    <hr>
+    <h2> Kategoryalar</h2>
+    <h3>
+        {% for category in categories %}
+
+        <a href="{% url 'category-articles' category.slug %}">Category Articles</a>
+        <p> {{category.name}} ({{ category.count_articles}}) ta yangilik bor </p>
+            </a>          
+        {% endfor %}
+    </h3>
+
+    <hr>
+
+    <h2>
+        <a href="{% url  'create' %}">
+            Yangilik qo'shish
+        </a>
+    </h2>
+
+{% include "ads.html" %}
+ 
+
+{%endblock content %}
+

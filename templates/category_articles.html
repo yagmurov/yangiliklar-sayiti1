@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{%block content%}
+        <h1>{{category.name}} Yangiliklari </h1>
+{% for article in articles %}
+
+<a href="{% url 'article-detail'  article.slug %}">
+
+        <p> {{article.id}}. {{article.title}} ({{article.created_at}}) </p>
+</a>
+        
+         {% endfor %}
+
+{%endblock content%}

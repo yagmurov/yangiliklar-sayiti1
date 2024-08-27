@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{%block content%}
+        <h1> Detail </h1>
+        {% if request.user == article.user %}
+        <!-- Maqola muallifi uchun ma'lumotni ko'rsatish -->
+    
+            <h2>
+                <a href="{% url  'update' article.slug %}">
+                    Yangilikni Taxrirlash
+                </a>| 
+
+                <a href="{% url  'delete' article.id %}">
+                    Yangilikni O'chirish
+                </a>
+            </h2>
+            {% endif %}
+
+
+        <p> 
+           Author: {{article.user.username}} tomonidan yaratilgan
+        </p>
+        <h1>{{article.title}}(ko'rishlar soni: {{ article.views}})</h1>
+        <img src="{{article.photo.url}}" alt="{{article.photo.url}}">
+        <h4>{{article.desc}}</h4>
+        <h4>{{article.created_at}}</h4>
+
+        <hr>
+        <h2> Related articles </h2>
+<div class="related">
+
+        {%for article in articles%}
+
+        <a href="{% url 'article-detail'  article.slug %}">
+            <img src="{{ article.photo.url}}"  width=" 200px"  alt=" {{article.title}}"
+            <p>  {{article.title| lower}}  </p>
+    </a>
+</div> 
+             {% endfor %}
+
+{%endblock content%}

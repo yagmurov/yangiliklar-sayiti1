@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{%block content%}
+        <h1>
+            Taxrirlash
+             </h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">
+                Taxrirlash
+            </button>
+
+        </form>
+        
+        
+{%endblock content %}

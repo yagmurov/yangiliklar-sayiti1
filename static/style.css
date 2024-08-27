@@ -1,0 +1,13 @@
+body{
+    background-color: #e7e55b;
+    /* background-image: url('./index.jpg'); */
+}
+
+a {
+    color: #ff0000;
+    text-decoration: none;
+}
+.related{
+    align-items: center;
+    display: flex;
+}

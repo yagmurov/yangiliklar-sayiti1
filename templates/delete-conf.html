@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{%block content%}
+    <body>
+        <h1>
+            {%block title%}
+            Haqiqatdan xam o'chirilsinmi? 
+            {%endblock title%}
+    
+            
+            </h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <button type="submit">
+                O'chirish
+            </button>
+        </form>
+            <a type='button 'href="{% url 'article-detail' article.slug%}">
+                Orqaga
+            </a>
+
+
+        
+        
+{%endblock content%}
